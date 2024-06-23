@@ -23,7 +23,7 @@ if (!empty($statement_date) && count($statement_date) > 0) {
             <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Total Withdraws in BDT: <?= number_format($total_withdraw, 2) ?></p>
         </td>
         <td style="text-align: right;padding: 2px;">
-            <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Opening Balance: <?= number_format($total_withdraw, 2) ?></p>
+            <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Opening Balance: <?= number_format($opending_bal, 2) ?></p>
         </td>
     </tr>
     <tr>
@@ -31,7 +31,7 @@ if (!empty($statement_date) && count($statement_date) > 0) {
             <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Total Deposits in BDT: <?= number_format($total_deposit, 2) ?></p>
         </td>
         <td style="text-align: right;padding: 2px;">
-            <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Available Balance: <?= number_format($total_deposit, 2) ?></p>
+            <p style="font-family: `Times New Roman`, Times, serif;font-weight: normal;font-size: 12px;">Available Balance: <?= number_format($balance, 2) ?></p>
         </td>
     </tr>
 </table>
