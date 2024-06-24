@@ -5,18 +5,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>Statement Generator</title>
-	<link href="assets/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/bootstrap-5.3.3-dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<link href="<?=site_url('assets/bootstrap-5.3.3-dist/css/bootstrap.min.css') ?>" rel="stylesheet">
+	<link href="<?=site_url('assets/bootstrap-5.3.3-dist/css/bootstrap-datepicker.min.css') ?>" rel="stylesheet">
 
-	<script src="assets/js/jquery-3.7.1.slim.min.js"></script>
-	<script src="assets/bootstrap-5.3.3-dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="<?=site_url('assets/js/jquery-3.7.1.slim.min.js') ?>"></script>
+	<script src="<?=site_url('assets/bootstrap-5.3.3-dist/js/bootstrap-datepicker.min.js') ?>"></script>
 </head>
 
 <body>
 
-	<form action="welcome/save" method="post">
+	<form action="<?=site_url('welcome/save');?>" method="post">
 		<div class="container mt-4">
-			<img src="assets/images/logo.png" />
+			<img src="<?=site_url('assets/images/logo.png') ?>" />
 			<div class="row mt-5">
 				<div class="col-md-6">
 					<div class="row mb-3">
@@ -82,6 +82,7 @@
 					<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
+								<th>SL</th>
 								<th>Date</th>
 								<th>Ref/Check</th>
 								<th>Description</th>
@@ -93,6 +94,7 @@
 						</thead>
 						<tbody id="more_row">
 							<tr>
+								<td>1</td>
 								<td>
 									<input type="text" name="statement_date[]" class="form-control datepicker" placeholder="Select Date" aria-label="Select Date">
 								</td>
@@ -148,6 +150,7 @@
 	</form>
 
 	<script>
+		let ids = 1;
 		let balance = 0;
 		let new_bal = 0;
 		$(function() {
@@ -159,10 +162,11 @@
 
 		function moreAdd(tag) {
 			let tds = $(tag).parents('tr').find('td');
-			let withdraw = parseFloat($(tds[3]).find('input').val());
-			let deposit = parseFloat($(tds[4]).find('input').val());
+			let withdraw = parseFloat($(tds[4]).find('input').val());
+			let deposit = parseFloat($(tds[5]).find('input').val());
 			if (deposit > 0 || withdraw > 0) {
 				let tr = `<tr>
+				<td>`+ (++ids) +`</td>
 			<td>
 				<input type="text" name="statement_date[]" class="form-control datepicker" placeholder="Select Date" aria-label="Select Date">
 			</td>
@@ -201,11 +205,11 @@
 
 		function delRow(tag) {
 			// let e = $(tag).parents('tr').find('td');
-			// let withdraw = parseFloat($(e[3]).find('input').val());
-			// let deposit = parseFloat($(e[4]).find('input').val());
+			// let withdraw = parseFloat($(e[4]).find('input').val());
+			// let deposit = parseFloat($(e[5]).find('input').val());
 			// console.log(e)
-			// console.log('withdraw', $(e[3]).find('input'))
-			// console.log('deposit', $(e[4]).find('input'))
+			// console.log('withdraw', $(e[4]).find('input'))
+			// console.log('deposit', $(e[5]).find('input'))
 			$(tag).parents('tr').remove();
 		}
 
@@ -225,16 +229,16 @@
 				alert('Must be assign Opening Balance!');
 			} else {
 				if (type == 'w' && amt > 0) {
-					$(tds[4]).find('input').attr('type', 'hidden');
+					$(tds[5]).find('input').attr('type', 'hidden');
 					new_bal -= amt;
 					setTotalWithdraw();
 				}
 				if (type == 'd' && amt > 0) {
-					$(tds[3]).find('input').attr('type', 'hidden');
+					$(tds[4]).find('input').attr('type', 'hidden');
 					new_bal += amt;
 					setTotalDeposit();
 				}
-				$(tds[5]).find('input').val(new_bal.toFixed(2));
+				$(tds[6]).find('input').val(new_bal.toFixed(2));
 				$('#avail_bal').val(new_bal.toFixed(2));
 			}
 
@@ -244,7 +248,7 @@
 			let total_withdraw = 0;
 			$('#more_row').find('tr').each((i, e) => {
 				let tds = $(e).find('td');
-				let withdraw = parseFloat($(tds[3]).find('input').val());
+				let withdraw = parseFloat($(tds[4]).find('input').val());
 				if (withdraw > 0) {
 					total_withdraw += withdraw;
 				}
@@ -256,7 +260,7 @@
 			let total_deposit = 0;
 			$('#more_row').find('tr').each((i, e) => {
 				let tds = $(e).find('td');
-				let deposit = parseFloat($(tds[4]).find('input').val());
+				let deposit = parseFloat($(tds[5]).find('input').val());
 				if (deposit > 0) {
 					total_deposit += deposit;
 				}

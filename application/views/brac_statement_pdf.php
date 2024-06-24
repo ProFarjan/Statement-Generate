@@ -19,16 +19,14 @@
 <body style="width: 100%;">
     <div style="width: 100%;">
         <div style="width: 60%;float: left;">
-            <img src="assets/images/brac_bank.png" width="376" />
             <p style="margin-bottom:12px;margin-top:25px;font-weight: bold;"><?= $name ?></p>
             <p style="margin: 0;color: #404044;"><?= $address ?></p>
             <p style="margin: 0;color: #404044;"><?= $state ?></p>
             <p style="margin: 0;color: #404044;"><?= $city ?></p>
             <p style="margin: 0;color: #404044;"><?= $country ?></p>
-            <p style="margin-top: 56px;font-weight: bold;">REF: &emsp; <?= $reff ?></p>
+            <p style="margin-top: 66px;font-weight: bold;">REF: &emsp; <?= $reff ?></p>
         </div>
         <div style="width: 40%;float: left;">
-            <br/>
             <div style="width: 100%;margin-left: 50px;">
                 <p style="margin: 0;word-spacing: -3px;line-height: 14px;letter-spacing: 0px;">BRAC Bank PLC.</p>
                 <p style="margin: 0;word-spacing: -3px;line-height: 14px;letter-spacing: 0px;">Anik Tower</p>
@@ -92,7 +90,7 @@
         </div>
     </div>
     <div style="margin-top: 12px;">
-        <h3 style="text-align: left;font-size: 12px;">STATEMENT OF ACCOUNT FOR THE PERIOD &emsp;&emsp; <?= $state_from_date ?> TO <?= $state_till_date ?></h3>
+        <h3 style="text-align: left;font-size: 12px;">STATEMENT OF ACCOUNT FOR THE PERIOD &emsp;&emsp; <?= strtoupper($state_from_date) ?> TO <?= strtoupper($state_till_date) ?></h3>
         <table style="width: 100%;margin-top: 12px;font-size: 10px;" cellspacing="2" border="0">
             <thead>
                 <tr>
@@ -119,7 +117,7 @@
                 <?php if (!empty($statement_date) && count($statement_date) > 0) : ?>
                     <?php foreach ($statement_date as $key => $s_date) : ?>
                         <tr>
-                            <td style="padding: 8px 0;text-align: left;border-right: 0;border-top:0;"><?= $s_date ?></td>
+                            <td style="padding: 8px 0;text-align: left;border-right: 0;border-top:0;"><?= strtoupper($s_date) ?></td>
                             <td style="padding: 8px 0;text-align: left;border-right: 0;border-top:0;"><?= $particulars[$key] ?></td>
                             <td style="padding: 8px 0;border-right: 0;border-top:0;ext-align: left;"><?= $chq[$key] ?></td>
                             <td style="padding: 8px 0;text-align: right;border-right: 0;border-top:0;"><?= !empty($withdraw[$key]) ? number_format($withdraw[$key], 2) : '0.00' ?></td>
