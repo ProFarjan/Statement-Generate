@@ -31,6 +31,24 @@
 							<input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" />
 						</div>
 					</div>
+					<div class="row mb-3">
+						<label for="State" class="col-sm-2 col-form-label">State</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="State" name="state" placeholder="Enter State" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="City" class="col-sm-2 col-form-label">City</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="City" name="city" placeholder="Enter City" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="Country" class="col-sm-2 col-form-label">Country</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="Country" name="country" placeholder="Enter Country" />
+						</div>
+					</div>
 					<div class="row mb-3"></div>
 					<div class="row mb-3"></div>
 					<div class="row mb-3"></div>
@@ -70,7 +88,7 @@
 					<div class="row mb-3">
 						<label for="i_date" class="col-sm-4 col-form-label bolder">Issue Date</label>
 						<div class="col-sm-6">
-							<input type="text" class="form-control datepicker" id="i_date" name="i_date" placeholder="Select Issue Date" />
+							<input type="text" class="form-control datepicker-full" id="i_date" name="i_date" placeholder="Select Issue Date" />
 						</div>
 					</div>
 				</div>
@@ -155,6 +173,10 @@
 		$(function() {
 			$('.datepicker').datepicker({
 				format: 'dd-M-yyyy',
+				autoclose: true
+			});
+			$('.datepicker-full').datepicker({
+				format: 'MM dd, yyyy',
 				autoclose: true
 			});
 		});

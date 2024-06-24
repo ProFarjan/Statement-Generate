@@ -55,19 +55,14 @@ class Welcome extends CI_Controller
 			'margin_top' => 2.5,
 			'margin_bottom' => 2.5,
 		]);
-		// $this->load->view('brac_statement_pdf', $data);
+		$this->load->view('brac_statement_pdf', $data);
 		$content = $this->load->view('brac_statement_pdf', $data, true);
-		// // $footerContent = $this->load->view('brac_statement_pdf_footer', $data, true);
+		$footerContent = $this->load->view('brac_statement_pdf_footer', $data, true);
+		$footerPage = $this->load->view('brac_statement_pdf_footer_top', $data, true);
 
-		// // $footerPage = '
-		// // <div style="text-align: right; font-size: 10px;">
-		// // 	{PAGENO}/{nb}
-		// // </div>
-		// // ';
-
-		// // // $mpdf->SetHTMLFooter($footerPage);
+		$mpdf->SetHTMLFooter($footerPage);
 		$mpdf->WriteHTML($content);
-		// // // $mpdf->SetHTMLFooter($footerContent);
+		// $mpdf->SetHTMLFooter($footerContent);
 		$mpdf->Output("ef7bbbf8-48f2-49be-b6e0-76e7fdc8b285.pdf", 'I');
 	}
 }
