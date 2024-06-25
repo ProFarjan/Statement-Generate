@@ -25,6 +25,11 @@
                 <img src="<?=site_url('assets/images/logo.png') ?>" width="320px" />
             </a>
         </div>
+        <div class="col-md-6">
+            <a href="<?=site_url('welcome/ddbl_bank');?>">
+                <img src="<?=site_url('assets/images/ddbl.png') ?>" width="320px" />
+            </a>
+        </div>
     </div>
 </section>
 </body>

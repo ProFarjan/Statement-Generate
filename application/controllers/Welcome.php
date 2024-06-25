@@ -42,7 +42,7 @@ class Welcome extends CI_Controller
 		$mpdf->SetHTMLFooter($footerPage);
 		$mpdf->WriteHTML($content);
 		$mpdf->SetHTMLFooter($footerContent);
-		$mpdf->Output("ef7bbbf8-48f2-49be-b6e0-76e7fdc8b285.pdf", 'I');
+		$mpdf->Output(str_replace(' ', '-', $this->input->post('name')).".pdf", 'I');
 	}
 
 	public function brac_bank()
@@ -71,6 +71,34 @@ class Welcome extends CI_Controller
 		$mpdf->SetHTMLFooter($footerPage);
 		$mpdf->WriteHTML($content);
 		// $mpdf->SetHTMLFooter($footerContent);
-		$mpdf->Output("ef7bbbf8-48f2-49be-b6e0-76e7fdc8b285.pdf", 'I');
+		$mpdf->Output(str_replace(' ', '-', $this->input->post('name')).".pdf", 'I');
+	}
+
+	public function ddbl_bank()
+	{
+		$this->load->view('ddbl_bank');
+	}
+
+	public function save_ddbl()
+	{
+		$data = $this->input->post();
+
+		$mpdf = new Mpdf\Mpdf([
+			'format' => [209.93, 297.05],
+			'orientation' => 'P',
+			'margin_left' => 6,
+			'margin_right' => 6,
+			'margin_top' => 24,
+			'margin_bottom' => 30,
+			'margin_header' => 2,
+		]);
+		// $this->load->view('brac_statement_pdf', $data);
+		$content = $this->load->view('ddbl_statement_pdf', $data, true);
+		// $footerPage = $this->load->view('brac_statement_pdf_footer_top', $data, true);
+		// $mpdf->SetHTMLHeader('<div style="padding: 0; margin: 0; border: none; text-align: left;"><img src="assets/images/brac_bank.png" width="376" style="margin: 0; padding: 0; border: none;" /></div>', 'o');
+		// $mpdf->SetHTMLFooter($footerPage);
+		$mpdf->WriteHTML($content);
+		// $mpdf->SetHTMLFooter($footerContent);
+		$mpdf->Output(str_replace(' ', '-', $this->input->post('name')).".pdf", 'I');
 	}
 }
