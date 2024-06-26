@@ -65,7 +65,7 @@
                 </table>
             </div>
             <div style="width: 40%;float: left;margin-top:25px;">
-                <p style="margin: 0 0 14px;color: #404044;">For <?= strtoupper($state_from_date) ?> to <?= strtoupper($state_till_date) ?></p>
+                <p style="margin: 0 0 14px;color: #404044;">For <?= ucwords($state_from_date) ?> to <?= ucwords($state_till_date) ?></p>
                 <table style="width: 100%;margin: 0;">
                     <tr>
                         <th style="text-align: left;">Account Number</th>
